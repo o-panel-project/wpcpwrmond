@@ -14,7 +14,7 @@
 #include "tctlwpcio.h"
 
 #define SYSFS_BACKLIGHT_IF_DIR	\
-	"/sys/devices/platform/omapdss/generic-bl/backlight/omap3evm-bklight"
+	"/sys/class/backlight/backlight.2"
 #define SYSFS_BACKLIGHT_IF_DIR_J4	\
 	"/sys/class/backlight/backlight.4"
 #define	SYSFS_BACKLIGHT_BRIGHT	SYSFS_BACKLIGHT_IF_DIR"/brightness"
@@ -120,7 +120,7 @@ void _tctl_poweroff()
     if ((fd = open(TCTL_WPCIO_DEVICE, O_RDWR)) < 0) {
         return;
     }
-    if (ioctl(fd, WPC_SET_GPIO_OUTPUT_HIGH, 58) < 0) {
+    if (ioctl(fd, WPC_SET_GPIO_OUTPUT_HIGH, 116) < 0) {
         close(fd);
         return;
     }

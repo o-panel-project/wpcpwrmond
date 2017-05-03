@@ -120,8 +120,8 @@ void fastdown()
 
 	i = _tctl_GetBackLight();
 	_tctl_SetBackLight(0);	/* backlight off */
-	system("echo 0 > /sys/devices/platform/omapdss/overlay2/global_alpha");
-	system("echo 0 > /sys/devices/platform/omapdss/manager0/alpha_blending_enabled");
+	//system("echo 0 > /sys/devices/platform/owldss/overlay2/global_alpha");
+	//system("echo 0 > /sys/devices/platform/owldss/manager0/alpha_blending_enabled");
 	{
 	const char *ttyname = "/dev/tty1";
 	const char *message = "Power down ...";
@@ -138,6 +138,7 @@ void fastdown()
 	}
 	sprintf(cmd, "tput clear > %s", ttyname);
 	system(cmd);
+	
 	sprintf(cmd, "tput cup %d %d > %s", y/2, (x-strlen(message))/2, ttyname);
 	system(cmd);
 	sprintf(cmd, "echo \'%s\' > %s", message, ttyname);
